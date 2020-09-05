@@ -18,6 +18,7 @@
             1) Se o ano divide por 400 é bissexto; *OU*
             2) se divide por 4 *E* não divide por 100, é bissexto
 
+            Obs.:O cálculo começou a valer em 1582!!
             Alguns anos para testar:
             1900: não é
             1600: bissexto
@@ -27,21 +28,21 @@
             2000: bissexto
             2013: não é
       */
-        let ano=parseInt(prompt('Digite o ano'))
-
-        if(insNaN(ano)){
-            alert('"Erro",vocÊ não digitou um numero')
+        let ano=parseInt(prompt('Digite o ano maior ou igual a 1582:'))
+        if(insNaN(ano)||ano < 1582){
+            alert('Erro,o ano informado é inválido')
         }
-            
-        
+        //Testando a divibilidade  do ano por 400    
         else if(ano % 400 == 0){
-            alert('O ano é bissexto')
+            alert('O ano é bissexto!!!')
         }
-        
-        else if(ano % 4 == 0 && ano % 100 != 0){
+        //Ano divide exatamente por 4 E NÃO DIVIDE EXATAMENTE POR 100
+        else if(ano % 4 == 0 && ano % 100 !== 0){
             alert("O ano é bissexto")
         }
-        else ("O ano não é bissexto")
+        else{
+            alert("O ano não é bissexto")
+        } 
         
     </script>
 </head>
