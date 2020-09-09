@@ -37,28 +37,33 @@
             alert('Erro:pelo menos um dos números informados são invalido.')
             temErro= true
         }
-        
-        else if(op== "+"){
-           res=num1+num2
-          
-        }
-        else if(op== "-" ){
-           res=num1-num2
-         
-        }
-        else if(op=="/"||op==':'){
-           res=num1/num2
-           
-        }
-        else if(op=="*"||op=='X'||op=='x'){
-            res=num1*num2
-        }
+        else{
+            switch(op){
+                case '+':
+                    res=num1 + num2
+                    break
+                case '-':
+                    res=num1 - num2
+                    break
+                case 'X':  
+                case 'x':
+                case '*':
+                    res=num1 * num2
+                    break
+                case '/':
+                case ':':
+                    res=num1 / num2
+                    break
 
-        else {
-            alert("Erro:o operador informado é inválido")
-            temErro=true
-        }    
-         if(!temErro){
+                default:    //se não entrar em nenhum case
+                    alert('Erro: o operador informado é inválido')  
+                    temErro = true                   
+            }
+
+        }
+        
+        
+        if(!temErro){
             // document.write('O resultado da operação:'+ num1+''+op+''+num2+' é igual a' + res + '.')
             //Usando string template(que usa acentos graves-backticks)
              document.write(`O resultado da operação: ${num1} ${op} ${num2} é igual a ${res}.`)
