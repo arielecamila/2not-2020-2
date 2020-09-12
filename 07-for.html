@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+     <script>
+        //'use strict impede que variaveis sejam declaradas'
+        //'sem o uso de let,var ou const'
+        //Inicializar variaveis diretamente é má pratica de
+        //programação
+
+        'use strict'
+    /*
+    Caracteristicas do loop for
+    1) Local de teste:no inicio
+    2)Garantia de execução:0
+    3)Numeros de repetição:determinado
+    */
+
+
+        //Escrever os número de 1 a 10
+        //Três partes do for
+        //1)Inicialização
+        //2)Condição
+        //3)Incremento
+        let i 
+        for(i = 1; i <= 10;i = i ++){
+
+             document.write(i + '<br>')
+        }
+           //Traço HTML
+           document.write('<hr>')
+
+           //Escrever os números de 1 a 10,saltando de 2 em 2
+
+           for(let i = 1; i <= 10;i = i += 2){
+             document.write(i +'<br>')
+        }
+         //Traço HTML
+           document.write('<hr>')
+
+           //Escrever os números de 10 a 1,em ordem reseva
+
+           for(let i = 10; i >= 1;i >= i--) {  
+                document.write(i +'<br>')
+        }
+                
+                  
+
+
+    </script>
+<body>
+    
+</body>
+</html>
