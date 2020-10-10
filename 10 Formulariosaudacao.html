@@ -16,40 +16,29 @@
             border:1px solid lightgraY;
             border-radius:8px;
             width:200px;
+
         }
         div, fieldset{
          
             margin-bottom:15px;
         }
      </style>   
-     <script>
-        //'use strict impede que variaveis sejam declaradas'
-        //'sem o uso de let,var ou const'
-        //Inicializar variaveis diretamente é má pratica de
-        //programação
-        /*
-         name tem por funcao cria um grupo de opçoes,mutualmente 
-         esclusiva de um estiver marcado 
-        /*o outro automaticamente de desmarca dentro desse grupo 
-        */
-
-        'use strict'
-    </script>
+    
 <body>
     
     <h1>Formulário de Saudação</h1>
     <div>
-        <label>Primeiro Nome</label>
-        <input type="text"id="Primeiro-Nome" placeholder="Informe seu primeiro nome" size="25">
+        <label>Primeiro nome</label>
+        <input type="text"id="primeiro-nome" placeholder="Informe seu primeiro nome" size="25">
     </div>
     
     <div>
         <label>Sobrenome</label>
-        <input type="text" id="Sobrenome" placeholder="Informe seu sobrenome">
+        <input type="text" id="sobrenome" placeholder="Informe seu sobrenome">
     </div>
 
     <div>
-        <label>Forma de Tratamento</label>
+        <label>Forma Tratamento</label>
         <select id="forma-tratamento">
             <option>(Selecione)</option>
             <option>Vossa Majestade</option>
@@ -77,7 +66,7 @@
         <fieldset>
             <legend>Exibição de Saudação</legend>
             <input type="checkbox"id="alert" checked>
-            <label for="alert">Exibir com alert()</label>
+            <label for="alert">Exibir com alert</label>
             <br>
             <input type="checkbox" id="document">
             <label for="document">Exibir no documento</label>
@@ -92,4 +81,139 @@
      
 
 </body>
+
+ <script>
+        //'use strict impede que variaveis sejam declaradas'
+        //'sem o uso de let,var ou const'
+        //Inicializar variaveis diretamente é má pratica de
+        //programação
+        /*
+         name tem por funcao cria um grupo de opçoes,mutualmente 
+         esclusiva de um estiver marcado 
+        /*o outro automaticamente de desmarca dentro desse grupo 
+        */
+
+        'use strict'
+
+        /*
+        Passo 1:captura dos elementos html
+        */
+       const elPrimeironome=document.getElementById('primeiro-nome')
+       const elSobrenome=document.getElementById('sobrenome')
+       const elFormaTratamento=document.getElementById('forma-tratamento')
+
+       const elMasculino=document.querySelector('#masculino')
+       const elFeminino=document.querySelector('#feminino')
+       const elHoraDia=document.querySelector('#hora dia')
+       const elAlert=document.querySelector('#alert')
+       const elDocument=document.querySelector('#document')
+       const elSaudacao=document.querySelector('#saudacao')
+       const elEnviar=document.querySelector('#enviar')
+
+       /*
+        Passo 2:validação da entrada de usuario
+       */
+      function validar(){
+          let valido=true
+          //trim():retira espaço em branco no inicio e no final de uma string
+          if(elPrimeironome.value.trim() ==''){
+              alert('O primeiro nome deve ser informado')
+              elPrimeironome.focus()//Coloca o foco no controle
+              valido = false
+          }
+          else if(elSobrenome.value.trim()==''){
+              alert('O Sobrenome deve ser informado')
+              elSobrenome.focus()
+              valido = false
+          }
+          else if(elFormaTratamento.selectedIndex <= 0){
+              alert('Escolha uma forma de tratamento')
+              elFormaTratamento.focus()
+              valido = false
+          }
+          else if(elHoraDia.value.trim() == ''|| elHoraDia.value < 0||
+          elHoraDia.value>23){
+              alert('Informe um hora dia válida')
+              elHoraDia.focus()
+              valido = false
+          }
+          else if(!(elAlert.checked || elDocument.checked)
+            alert('Pelo menos uma forma de exibição dever ser marcada')
+            elAlert.focus()
+            valido = false
+      }
+        function montarSaudacao(){
+            if(validar()){
+                let saudacao=''//strict vazia
+                if(elHoraDia < 12){
+                    saudacao='Bom dia'
+                }
+                else if(elHoraDia < 18){
+                    saudacao='Boa tarde'
+                }
+                else{
+                    saudacao='Boa noite'
+                }
+                switch(elFormaTratamento.selectedIndex){
+                    case 1:
+                        saudacao += 'Vossa Majestade'
+                        break
+                     case 2:
+                         if(elMasculino.checked){
+                             saudacao += 'Excelentissimo'
+                            
+                         }  
+                         else{
+                             saudacao += 'Excelentissima'
+                         }
+                         break
+                     case 3:
+                        if(elMasculino.checked){
+                            saudacao += 'Ilustrissmo'
+                        else{
+                            saudacao += 'Ilustrissima'
+                            break
+
+                        } 
+                    case 4:
+                       
+                        saudacao += 'Vossa senhoria'
+                        break   
+                                                
+                    }
+                    case 5:
+                        if(elFeminino.checked){
+                            saudacao += 'Senhora'
+                        }
+                        else{
+                            saudacao += 'Senhor'
+                            break
+                        }
+                     default:
+                         if(elFeminino.checked){
+                             saudacao += 'Cremosissima'
+                         } 
+                         else{
+                             saudacao +='Cremosissimo'
+                             break
+                         }  
+                        
+                }
+             saudacao += elPrimeironome.value + ' '+ elSobrenome.value
+             saudacao += '  ,como posso ser util?'
+             
+             if(Alert.checked){
+                 alert(saudacao)
+             }
+             if(elDocument.checked){
+                 elSaudacao.innerText = saudacao
+             }
+
+            }
+        }
+      elEnviar.addEventListener('click',montarSaudacao)
+       
+    
+       
+    </script>
 </html>
