@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">177000.000000000</mso:Order>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100D1709B3E936BE4488A7EEB682FDD8227</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+<style>
+        label {
+            
+            display: block;
+        }
+        fieldset label {
+            display: inline;
+        }
+        
+        div, fieldset {
+            margin-top:20px;
+            margin-bottom: 15px;
+          
+               
+        }
+      
+    </style>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <div>
+    <label>Primeiro Numero</label>
+    <input type="Number" id="num1" placeholder="Informe o primeiro numero">
+    </div>
+    <div>
+        <label>Operadores</label>
+        <select id="op">
+            <option>(Selecione)</option>
+            <option>Soma</option>
+            <option>Subtração</option>
+            <option>Multiplicação</option>
+            <option>Divisão</option>
+            <option>Potenciação</option>
+            <option>Resto da divisão</option>
+        </select>   
+    </div>
+    <div>
+    <label>Segundo Numero</label>
+    <input type="Number" id="num2" placeholder="Informe o segundo numero">
+    <div>
+     <fieldset>
+        <legend>Exibição da Calculadora</legend>
+        <input type="checkbox" id="alert" checked>
+        <label for="alert">Exibir com alert</label>
+        <br>
+        <input type="checkbox" id="document">
+        <label for="document">Exibir no documento</label>
+    </fieldset>
+    <label>Valor</label>
+        <span id="resultado"> </span>
+
+    <div id="resultado"></div>
+
+    <div>
+        <button id="enviar">Enviar</button>
+    </div>
+</body>
+<script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+    
+        /* 
+
+            Monte um formulário com os seguintes campos:
+            * Primeiro número (input numérico)
+            * Operação aritmética (select, com as opções de soma, subtração,
+                multiplicação, divisão, potenciação e resto da divisão)
+            * Segundo número (input numérico)
+            * Div para exibição do resultado da operação aritmética
+            * Botão "calcular"
+
+            Validações:
+            * Os campos de número devem estar preenchidos e com números válidos
+            * Deve ter sido selecionada uma operação artimética válida
+
+        */
+        const elPrimeiroNumero= document.getElementById('num1')
+        const elSegundoNumero= document.getElementById('num2')
+        const elOperadores = document.getElementById('op')
+
+        let valido  =true
+
+        if(elPrimeiroNumero.value.trim()==''){
+            alert('O Primeiro Numero é:')
+            valido=false
+            elPrimeiroNumero.focus()
+        }
+        else if(elSegundoNumero.value.trim()==''){
+            alert('O Segundo Numero é:')
+            valido=false
+            elSegundoNumero.focus()
+        }
+        else if(elOperadores.selectedIndex <=0){
+                alert('Escolha um operador')
+                elOperadores.focus()
+                valido = false
+        }
+         else if(!(elAlert.checked || elDocument.checked)) {
+                alert('Pelo menos uma uma forma de exibição deve ser marcada.')
+                elAlert.focus()
+                valido = false
+        }
+         return valido
+
+         switch(elOperadores.selectedIndex ) {
+                    case 2:
+                    resultado=num1 + num2
+                    break
+                case 3 :
+                    resultado=num1 - num2
+                    break
+                case 4:
+                    res=num1 * num2
+                    break
+                case 5:
+                    res=num1 / num2
+                    break
+
+                
+
+                if(elAlert.checked) {
+                    alert(saudacao)
+                }
+                if(elDocument.checked) {
+                    elSaudacao.innerText = saudacao
+                }
+
+            
+    </script>
+        
+</html>
