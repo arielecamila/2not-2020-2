@@ -28,11 +28,11 @@
         div, fieldset {
             margin-top:20px;
             margin-bottom: 15px;
-          
-               
+                       
         }
       
     </style>
+
 </head>
 <body>
     <h1>Calculadora</h1>
@@ -64,89 +64,102 @@
         <input type="checkbox" id="document">
         <label for="document">Exibir no documento</label>
     </fieldset>
-    <label>Valor</label>
-        <span id="resultado"> </span>
-
     <div id="resultado"></div>
 
     <div>
-        <button id="enviar">Enviar</button>
+        <button id="calcular">Calcular</button>
     </div>
-</body>
-<script>
-        // 'use strict' impede que variáveis sejam declaradas
-        // sem o uso de let, var ou const
-        // Inicializar variáveis diretamente é má prática de
-        // programação
-        'use strict'
-    
-        /* 
-
-            Monte um formulário com os seguintes campos:
-            * Primeiro número (input numérico)
-            * Operação aritmética (select, com as opções de soma, subtração,
-                multiplicação, divisão, potenciação e resto da divisão)
-            * Segundo número (input numérico)
-            * Div para exibição do resultado da operação aritmética
-            * Botão "calcular"
-
-            Validações:
-            * Os campos de número devem estar preenchidos e com números válidos
-            * Deve ter sido selecionada uma operação artimética válida
-
-        */
+	
+		<script>
         const elPrimeiroNumero= document.getElementById('num1')
         const elSegundoNumero= document.getElementById('num2')
         const elOperadores = document.getElementById('op')
+        const elAlert = document.querySelector('#alert')
+        const elDocument = document.querySelector('#document')
+        const elCalcular = document.querySelector('#calcular')
+		const elResultado=document.querySelector('#resultado')
+        function validar(){
+            let valido=true
 
-        let valido  =true
-
-        if(elPrimeiroNumero.value.trim()==''){
-            alert('O Primeiro Numero é:')
-            valido=false
-            elPrimeiroNumero.focus()
-        }
-        else if(elSegundoNumero.value.trim()==''){
-            alert('O Segundo Numero é:')
-            valido=false
-            elSegundoNumero.focus()
-        }
-        else if(elOperadores.selectedIndex <=0){
+            if(elPrimeiroNumero.value.trim()==''){
+                alert('O Primeiro Numero é inválido')
+                valido=false
+                elPrimeiroNumero.focus()
+            }
+            else if(elSegundoNumero.value.trim()==''){
+                alert('O Segundo Numero é inválido')
+                valido=false
+                elSegundoNumero.focus()
+            }
+            else if(elOperadores.selectedIndex <=0){
                 alert('Escolha um operador')
                 elOperadores.focus()
                 valido = false
-        }
-         else if(!(elAlert.checked || elDocument.checked)) {
+            }
+            else if(!(elAlert.checked || elDocument.checked)) {
                 alert('Pelo menos uma uma forma de exibição deve ser marcada.')
                 elAlert.focus()
                 valido = false
-        }
-         return valido
+            }
+           
+            return valido
 
-         switch(elOperadores.selectedIndex ) {
-                    case 2:
-                    resultado=num1 + num2
-                    break
-                case 3 :
-                    resultado=num1 - num2
-                    break
-                case 4:
-                    res=num1 * num2
-                    break
-                case 5:
-                    res=num1 / num2
-                    break
+         
+         } 
+         function Calcular(){
+            
+            if(validar()){
+                let resultado = 0
+				let num1 = parseInt(elPrimeiroNumero.value)
+				let num2 = parseInt(elSegundoNumero.value)
+				let saida = ''
+				
+                switch(elOperadores.selectedIndex){
+                    case 1:
+                        operador= "+"
+                        resultado= num1 + num2
+                        break
+                     case 2:
+                        operador = "-"
+                        resultado = num1 - num2
+                         break
+                    case 3:
+                        operador= "*"
+                        resultado = num1 * num2
+                        break
+                     case 4:
+                        operador= "/"
+                        resultado= num1 / num2
+                        break
+                    case 5:
+                        operador="**"
+                        resultado=num1**num2
+                        break
+                    case 6:
+                        operador="%"
+                        resultado=num1%num2
+                        break
 
-                
-
-                if(elAlert.checked) {
-                    alert(saudacao)
+                }
+				
+				saida += saida.concat(num1, operador,num2,"=",resultado) 
+				if(elAlert.checked) {
+                    alert(saida)
                 }
                 if(elDocument.checked) {
-                    elSaudacao.innerText = saudacao
-                }
+                    elResultado.innerText = saida
+                
+                }				
 
-            
+
+            }
+        
+        }
+
+        elCalcular.addEventListener('click',Calcular )
+
     </script>
+</body>
+
         
 </html>
