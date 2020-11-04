@@ -135,7 +135,7 @@
         console.log('------------------------------------------------------------------------')
         //i igual a 0 porque a contagem se inicia no zero.
         let i
-        for( i = 0 <frutas.lenght; i++){
+        for( i = 0 < frutas.lenght; i++){
             console.log(i,frutas[i])
         }
         console.log('Valor final de i:',i)
@@ -148,8 +148,30 @@
 
                 console.log(frutas[i])
         }
+     console.log('------------------------------------------------------------------------')
 
-        //faltam os metodos de percuso: forEach() e for...of
+        //Percuso usando o LOOP for ..of
+        // 1)Sempre percorre  todos os elementod,do primeiro ao último
+        // 2) Não é possivel usa-lo para percorrer na ordem decrescente
+        //receberá o valor de um dos elementos do vetor,na ordem
+        //para cada fruta no vetor frutas print ela
+        //Essa variavel pode ler Qualquer nome valido
+
+        for (let fruta of frutas){
+            console.log(fruta)
+
+        }
+
+        /**
+         * Percusso usando forEach()
+         * forEach() é uma Função que todos os vetores têm
+         * e que espera,como parâmetro,que contém cada um dos 
+         * elementos dos vetores
+         */
+         frutas.forEach(function(x){
+             console.log(x
+         })
+
     </script>
 </head>
 <body>
