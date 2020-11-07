@@ -5,6 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelo de documento HTML</title>
+     <style>
+        label {
+            /* Forçar o modo de exibição em bloco */
+            display: block;
+        }
+        fieldset label {
+            display: inline;
+        }
+        fieldset {
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            width: 200px;
+        }
+        div, fieldset {
+            margin-bottom: 15px;
+        }
+        /*div {
+            border: 1px dotted red;
+        }*/
+    </style>
+</head>
+<body>
+    <h1>Número</h1>
+    
+    <div>
+        <label>Digite o número</label>
+        <input type="number" id="num" placeholder="Informe o numero">
+    </div>
+
+    <div>
+     <fieldset>
+        <legend>Exibição do Valores</legend>
+        <input type="checkbox" id="alert" checked>
+        <label for="alert">Exibir com alert</label>
+        <br>
+        <input type="checkbox" id="document">
+        <label for="document">Exibir no documento</label>
+    </fieldset>
+     <div>
+        <button id="enviar">Enviar</button>
+    </div>
     <script>
         // 'use strict' impede que variáveis sejam declaradas
         // sem o uso de let, var ou const
@@ -37,6 +78,40 @@
             resultados. Para gerar a exibição, faça um loop for..of.
 
         */
+
+       const elNum=document.getElementById('num')
+       const elAlert = document.querySelector('#alert')
+       const elDocument = document.querySelector('#document')
+       const elEnviar = document.querySelector('#enviar')
+
+      let num = []
+      let i
+      
+        if (num.length == 0){
+          num.push(elNum.value)
+        }else if(elNum.value > num[num.length -1]){
+          num.push(elNum.value)
+        }
+        else{
+            for(let x = 0;x < num.length;x++){
+                if (elNum.value < num[x] ){
+                    num.unshift(elNum.value)
+                }
+            }
+        }
+        for(let n of num){
+            document.write(num)
+        }
+                   
+       
+       num.push(23)
+       document.write(num + '<br>')
+       num.push(34)
+       document.write(num + '<br>')
+       num.unshift(12)
+       document.write(num + '<br>')
+       num.splice(2,0,'30')
+       document.write(num + '<br>')
         
     </script>
 </head>
